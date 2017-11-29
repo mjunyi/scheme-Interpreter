@@ -1,0 +1,10 @@
+(define x 212312)
+(define x 3)
+x
+
+(define y (lambda (x) x))
+(y 50)
+
+(define x (lambda (y) (define z y)))
+(x 100)
+z

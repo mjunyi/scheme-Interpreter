@@ -1,0 +1,12 @@
+(define hello (let ((x 3)) x))
+(define x 2)
+x
+hello
+x
+
+(define hello (lambda () (let ((x 5)) x)))
+(define x 2)
+x
+hello
+(hello)
+x

@@ -1,0 +1,25 @@
+(define bst?
+  (lambda (bst)
+    ;;Checks if parent, left and right of tree are valid nodes
+    (if (entry bst)
+        (if (left bst)
+            (if (right bst)
+                ;;Recurses down the tree until a (quote ()) is found, where it returns #t
+                (if (null-bst? (left bst))
+                    (if (null-bst? (right bst))
+                        #t
+                        (bst? (right bst)))
+                    (begin
+                      (bst? (left bst))
+                      (if (null-bst? (right bst))
+                        #t
+                        (bst? (right bst)))))
+                #f)
+            #f)
+        #f)))
+
+(define null-bst?
+  (lambda (bst)
+    (if (eqv? bst (quote ()))
+        #t
+        #f)))

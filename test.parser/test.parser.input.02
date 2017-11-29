@@ -1,0 +1,18 @@
+(define lazy-add
+  (lambda (llst1 llst2)
+    (if (null? llst1)
+        (if (null? llst2)
+            ;case where llst1 and llst2 are both empty, return empty list
+            (quote ())
+            ;case where llst1 is empty, but lst2 is not. Add 0 to the first element of llst2
+            ;and keep recursing with the lazy lists
+            (cons (+ 0 (car llst2))
+                  (lambda () (lazy-add (quote ()) ((cdr llst2))))))
+        (if (null? llst2)
+            ;case where llst1 is not empty, but llst2 is.
+            (cons (+ 0 (car llst1))
+                  (lambda () (lazy-add ((cdr llst1)) (quote ())))
+            ;case where llst1 and llst 2 are both not empty, add their first elements,
+            ;and keep recursing with the lazy lists
+            (cons (+ (car llst1) (car llst2))
+                  (lambda () (lazy-add ((cdr llst1)) ((cdr llst2))))))))))

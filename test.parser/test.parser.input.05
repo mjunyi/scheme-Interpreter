@@ -1,0 +1,10 @@
+(#%require rackunit)
+
+(define prime-helper2
+  (lambda (firstE sllst)
+    (if (null? sllst)
+        sllst
+        (if ((not-divisible-by firstE) (car sllst))
+            (cons (car sllst)
+                  (lambda () (prime-helper2 firstE (sieve sllst))))
+            (prime-helper2 firstE (sieve sllst))))))
